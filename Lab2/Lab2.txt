@@ -1,0 +1,20 @@
+Linear Search
+
+The Best Case: linear time should be 1 since it will be in the first element of the array it will only access it once.
+
+The Worst Case: will have the value is not found in the array so there would be n time.
+
+ The Average Case: We assume that using the Random library in Java will provide proficient uniformity of input. So it would average out to n/2 accesses/time.
+
+When I first ran the program with my worst and best cases, the program had a java.lang.OutOfMemoryError. The best case inputs had a time of 0.00 up until 67108864. While the worst case had a time of 0.03. The average case also had a time of 0.00 up till 67108864.
+
+Insertion Sort
+
+
+The Best Case: will be a sorted array. In this case, the array will only need n time since it will check if the entire array is completely sorted.
+
+The Worst Case: A array that is reverse sorted. In this case, the array will need n^2 since every element will need to be compared n times to find the correct location. And there are n elements this is done for which makes n * n or n^2 time.
+
+The Average Case: The array is randomly created it's party not ordered. It seems to take around half as much time as the Worst Case.
+
+I was surprised with the huge difference between linear and quadratic time. Which is a lot more extreme than the difference  from 0(1) and O(n).

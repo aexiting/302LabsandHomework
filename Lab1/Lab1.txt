@@ -1,0 +1,18 @@
+Adam Pettway
+
+
+I will make tests for these cases:
+A)
+
+1) The required element is not in the array. In this case the function should return false.
+2) There are multiple items in the array
+3) The element is at the beginning of the array In this case it should return the index of the first occurance in the array.
+4) The element is at the end of the array.
+5) The array has one element.
+6) The array has 50000 elements
+7) The array is empty.
+
+B)  The test function will put the element in a location in the array and then check if the function returns the location, if it does so it will print out "Test Passed". In the case of testing for multiple occurances, the array the element will be in multiple locations in the array and the test function will record the first occurance and use that to test if the function worked properly.
+
+C) The edge cases are: multiple occurances, the element is in index 0 or index n-1. (n is the length of the array), empty array.
+
