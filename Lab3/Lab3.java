@@ -1,7 +1,12 @@
 
+import java.util.Arrays;
 class Lab3 {
 
     public void RunTestSuite() {
+      int[] arrayToSort = {3,2,1};
+      MergeSortLab3 mergeSortLab3 = new MergeSortLab3();
+      mergeSortLab3.RecursiveMergeSortWithAllocation(arrayToSort, 0, arrayToSort.length-1);
+      System.out.println(Arrays.toString(arrayToSort));
     }
 
     public void RunTimeSuite() {
@@ -16,15 +21,15 @@ class Lab3 {
 
             long startTimeMillis = System.currentTimeMillis();
             mergeSortLab3.RecursiveMergeSortWithAllocation(arrayToSort, 0, arrayToSort.length-1);
-            System.out.printf(" %8.2f", (System.currentTimeMillis() - startTimeMillis)/1.0); 
+            System.out.printf(" %8.2f", (System.currentTimeMillis() - startTimeMillis)/1.0);
 
             startTimeMillis = System.currentTimeMillis();
             mergeSortLab3.RecursiveMergeSortWithoutAllocation(arrayToSort, 0, arrayToSort.length-1);
-            System.out.printf(" %8.2f", (System.currentTimeMillis() - startTimeMillis)/1.0); 
+            System.out.printf(" %8.2f", (System.currentTimeMillis() - startTimeMillis)/1.0);
 
             startTimeMillis = System.currentTimeMillis();
             mergeSortLab3.NonRecursiveMergeSortWithoutAllocation(arrayToSort);
-            System.out.printf(" %8.2f", (System.currentTimeMillis() - startTimeMillis)/1.0); 
+            System.out.printf(" %8.2f", (System.currentTimeMillis() - startTimeMillis)/1.0);
 
             System.out.println();
         }
