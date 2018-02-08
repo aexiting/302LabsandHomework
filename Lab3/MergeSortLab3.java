@@ -2,6 +2,7 @@
 import java.util.Arrays;
 class MergeSortLab3
 {
+    int[] globalintegerArray;
     MergeSortLab3() {
     }
     void MergeWithAllocation(int[] integerArray, int startIndex, int midIndex, int endIndex) {
@@ -45,6 +46,40 @@ class MergeSortLab3
     }
 
     void MergeWithoutAllocation(int[] integerArray, int startIndex, int midIndex, int endIndex) {
+      for(int i = 0; i <= midIndex; i++){
+          globalintegerArray[i] = integerArray[i+startIndex];
+      }
+      for(int i = 0; i <= endIndex; i++){
+          globalintegerArray[i] = integerArray[midIndex+ 1 + i];
+      }
+      int valueR = midIndex;
+      int valueL = startIndex;
+      int x = startIndex;
+      while(valueR <= endIndex && valueL <= midIndex){ //iterate until you meet the correct index in either the "left" or "right" side
+          if(globalintegerArray[valueR] <= globalintegerArray[valueL]){
+              integerArray[x] = globalintegerArray[valueR];
+              valueR++;
+          }
+          else {
+              integerArray[x] = globalintegerArray[valueL];
+              valueL++;
+          }
+          x++;
+      }
+      if(valueR == endIndex){
+          for(int i = valueL; i <= midIndex; i++){
+              integerArray[x] = globalintegerArray[i];
+              x++;
+          }
+      }
+       if(valueL == midIndex){
+          for(int i = valueR; i <= endIndex; i++){
+              integerArray[x] = globalintegerArray[i];
+              x++;
+          }
+      }
+
+
     }
 
     void RecursiveMergeSortWithAllocation(int[] integerArray, int startIndex, int endIndex) {
@@ -57,6 +92,13 @@ class MergeSortLab3
     }
 
     void RecursiveMergeSortWithoutAllocation(int[] integerArray, int startIndex, int endIndex) {
+      globalintegerArray = new int[endIndex+1];
+      if(startIndex<endIndex){
+      int midIndex =(startIndex+endIndex)/2;
+      RecursiveMergeSortWithAllocation(integerArray,startIndex,midIndex);
+      RecursiveMergeSortWithAllocation(integerArray,midIndex+1,endIndex);
+      MergeWithAllocation(integerArray,startIndex,midIndex,endIndex);
+    }
     }
 
     void NonRecursiveMergeSortWithoutAllocation(int[] integerArray) {

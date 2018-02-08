@@ -3,10 +3,13 @@ import java.util.Arrays;
 class Lab3 {
 
     public void RunTestSuite() {
-      int[] arrayToSort = {3,2,1};
+      int[] arrayToSort = {0,3,2,1,6,5,1,2,3,4};
       MergeSortLab3 mergeSortLab3 = new MergeSortLab3();
-      mergeSortLab3.RecursiveMergeSortWithAllocation(arrayToSort, 0, arrayToSort.length-1);
+      //mergeSortLab3.RecursiveMergeSortWithAllocation(arrayToSort, 0, arrayToSort.length-1);
+      //note that the array size is 10
+      mergeSortLab3.RecursiveMergeSortWithoutAllocation(arrayToSort, 0, arrayToSort.length-1);
       System.out.println(Arrays.toString(arrayToSort));
+
     }
 
     public void RunTimeSuite() {
