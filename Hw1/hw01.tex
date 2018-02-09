@@ -1,5 +1,6 @@
 \documentclass[letterpaper,11pt]{article}
-
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm}
 \usepackage{fullpage}
 \usepackage{amsmath}
 \usepackage{amsthm}
@@ -11,67 +12,82 @@
 
 \noindent{Adam Pettway}
 
+
 \noindent{Colgate University} 
 
 \noindent{\bf Problem Set 1 --- Invariants and Induction} 
 
 \begin{enumerate}
 \item Problem 2.1-3 \\
-The variation of the sequencial search detailed in the problem does have different effciencies. For the best case effciency the classical sequencial search is  1. In this case, the search key is found in the first element so the algorithm terminates after one loop. However, in the variation all elements need to be searched since a list of key locations need to be returned. And the key may be in the last element. The worst case is the same in both versions, since the key is found in the last element the entire array needs to be searched which makes the effciency n. Finally, for the average effciency they differ. The average effciency for the variation is n since all elements are accessed.
+\begin{algorithm}[!h]
+\textsc{Linear-Search}($A$,$k$)
+\begin{algorithmic}
+\For{$j = $ \textbf{to} $A$.length}
+\If{ $A[i] = k$  }
+\EndIf 
+\Return \\
+\EndFor
+\Return NULL
+\end{algorithmic}
+\end{algorithm}\\
+Invariant: The start of each iteration A[1...i-1] are not equal to v.\\
+Initialization: i = 1 and is less than A.length.
+Maintence: During each step in the for loop we know that if we got to point A[i] then A[1...i] does not equal k. Otherwise the function would return. This perservers the invariant.\\
+Termination: The loop terminates if i > A.length since i increases by one very time we know that A[1...i-1] does not equal k. And since i-1 == A.length this is the entire array and we return NULL since k does exist in the array.
 \item Problem 2-2 in CLRS, 3rd edition. 
 \begin{enumerate}
+\item We need to prove that the array is a permunation of the input array.
+
 \item 
-Prove that $\frac{n(n+1)}{2} \in O(n^3)$.\\
-
-\begin{proof}
-We show that $\exists c>0,n_0>0 \text{ s.t. } 0 \leq \frac{n(n+1)}{2} \leq cn^3$, $\forall n \geq n_0$.
-\begin{align*}
-\frac{n(n+1)}{2}&\leq \frac{n^2+n}{2}&n\geq 1\\
-            &\leq n^3 + n&n\geq 1\\
-            &\leq 2n^3&n\geq 1
-\end{align*}
-Furthermore, we have that $\frac{n(n+1)}{2} \geq 0$ for $n\geq 1$.
-Therefore for $c=2$, and all $n\geq n_0=1$, we have that $0\leq \frac{n(n+1)}{2}  \leq cn^3$ and by definition $\frac{n(n+1)}{2}  \in O(n^3)$.
-\end{proof}
-
+Initialization: It is the last element of A in the array \\
+Maintence: Switch A[j] and A[j-1] if it is smaller this means that the smallest item is always closer to the right.\\
+Termination: After the loop finishes j = i which implies that i is the smallest element from the right of the array.
 \item
-Prove that $\frac{n(n+1)}{2} \in O(n^2)$.\\
-
-\begin{proof}
-We show that $\exists c>0,n_0>0 \text{ s.t. } 0 \leq \frac{n(n+1)}{2} \leq cn^2$, $\forall n \geq n_0$.
-\begin{align*}
-\frac{n(n+1)}{2}&\leq \frac{n^2+n}{2}&n\geq 1\\
-            &\leq n^2 + n&n\geq 1\\
-            &\leq 2n^2&n\geq 1
-\end{align*}
-Furthermore, we have that $\frac{n(n+1)}{2} \geq 0$ for $n\geq 1$.
-Therefore for $c=2$, and all $n\geq n_0=1$, we have that $0\leq \frac{n(n+1)}{2}  \leq cn^3$ and by definition $\frac{n(n+1)}{2}  \in O(n^3)$.
-\end{proof}
-
+Initialization: We start with the original array which holds.\\
+Maintence: A[i] is the smallest of the array for every loop iteration while the rest that are right of the array are shuffled, this implies that A[1..i] are sorted.\\
+Termination: After the loop finishes i = n. Which means that A[1..n] are sorted and this is the entire array.
 \item
-Prove that $\frac{n(n+1)}{2} \in \Theta(n^2)$.\\
-
-We show that $\frac{n(n+1)}{2} \in O(n^2)$ and that $\frac{n(n+1)}{2} \in \Omega(n^2)$. By Theorem 3.1, this shows that $\frac{n(n+1)}{2} \in \Theta(n^2)$.
-
-First we show that $\frac{n(n+1)}{2} \in O(n^2)$. Which is done in part $(b)$. \\
-
-Next, we show that $\frac{n(n+1)}{2} \in \Omega(n^2)$.
-\begin{proof}
-We show that $\exists c>0,n_0>0 \text{ s.t. } 0 \leq cn^2 \leq \frac{n(n+1)}{2}$, $\forall n \geq n_0$.
-\begin{align*}
-\frac{n(n+1)}{2} &\geq  \frac{n+1}{2} & \forall n\\
-            &\geq n^2 + n^2&n\geq 1\\
-            &=    2n^2&n\geq 1\\
-            &\geq 0 &n\geq 1
-\end{align*}
-Furthermore, we have that $n^2 + n + 5 \geq 0$ for $n\geq 1$.
-Therefore for $c=2$, and all $n\geq n_0=1$, we have that $0\leq cn^2 \leq n^2 + n + 5$ and by definition $n^2 + n + 5 = \Omega(n^2)$.
-\end{proof}
-\item a durian
+The worst worst-case for bubble sort is $O(n^2)$. This happens in a reversely ordered list where each inner loop takes n accesses.
 \end{enumerate}
 \item Prove by induction that for every non-negative integer $n$
-\[\sum_{k=0}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}.\]
+\[\sum_{k=0}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}.\] 
+\begin{proof}
+Base case: $n=0$, then both $\sum_{i=0}^{0}i^2 = 0$ and $\frac{0(0+1)(0+1)}{6}= 0$.
+
+Inductive step: Assume that $\sum_{i=0}^{k-1}i = \frac{k(k+1)(2k+1)}{6}$. 
+\begin{align*}
+\sum_{i=0}^{k+1}i^2 &= \sum_{i=0}^{k}i^2 + (k+1)^2&\\
+                &= \frac{(k)(k+1)(2k+1)}{6}+ (k+1)^2&\text{I.H.}\\
+                &= \frac{(k+1)[(k)(2k+1)6(k+1)^2]}{6}&\\
+                &= \frac{(k+1)(2k^2+7k-6)}{6}&\\
+                &= \frac{(k+1)(k+2)(2k+3)}{6}.&
+\end{align*}
+\end{proof}
+
+\newpage
+
 \item Prove that given an unlimited supply of 6-cent coins, 10-cent coins, and 15-cent coins, one can make any amount of change larger than 29 cents.
+\begin{proof}
+Let $p$ be value of the coins we can make. We have two cases: $29 < p \leq 35$, and $p > 35$.
+
+Case 1: We begin with $p > 35$.
+We inductively assume that we can make $p-6$ cents worth of postage (which is greater than $29$). Then we add a $6$-cent stamp to get $p = (p-6) + 6$ cents of postage.
+
+Case 2: We now show it is true for $29 < p \leq 35$, by manually showing that each value $p$ is a sum of $6$'s  $10$'s and $15$'s. 
+
+$p = 30 = 15+ 15$
+
+$p = 31 = 6+15+10$
+
+$p = 32 = 6 + 6 + 10 + 10$
+
+$p = 33 = 6 + 6 + 6 + 15$
+
+$p = 34 = 6 + 6 + 6 + 6 +10$
+
+$p = 35 = 15 + 10 + 10$
+
+\end{proof}
 \end{enumerate}
 
 \end{document}
