@@ -35,6 +35,7 @@ Initialization: i = 1 and is less than A.length.
 Maintence: During each step in the for loop we know that if we got to point A[i] then A[1...i] does not equal k. Otherwise the function would return. This perservers the invariant.\\
 Termination: The loop terminates if i > A.length since i increases by one very time we know that A[1...i-1] does not equal k. And since i-1 == A.length this is the entire array and we return NULL since k does exist in the array.
 \item Problem 2-2 in CLRS, 3rd edition. 
+<<<<<<< HEAD
 \begin{enumerate}
 \item We need to prove that the array is a permunation of the input array.
 
@@ -88,6 +89,13 @@ $p = 34 = 6 + 6 + 6 + 6 +10$
 $p = 35 = 15 + 10 + 10$
 
 \end{proof}
+=======
+
+
+\item Prove by induction that for every non-negative integer $n$
+\[\sum_{k=0}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}.\]
+\item Prove that given an unlimited supply of 6-cent coins, 10-cent coins, and 15-cent coins, one can make any amount of change larger than 29 cents.
+>>>>>>> 60ddd8377ef7bee17b2d33b1ecf4e9af44efd1dd
 \end{enumerate}
 
 \end{document}
