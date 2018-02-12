@@ -1,0 +1,64 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+
+\begin{document}
+\noindent{COSC 302: Analysis of Algorithms --- Spring 2018}
+
+\noindent{Adam Pettway}
+
+\noindent{Colgate University} 
+
+\noindent{\bf Problem Set 2 --- Order of Growth and Asymptotic Analysis} 
+
+\begin{enumerate}
+\item Describe a $\Theta(n\log n)$-time algorithm that, given an array $A$ of $n$ integers and another integer $x$, determines whether or not there exist two elements in $A$ whose sum is exactly $x$. (\emph{Hint: do not use divide-and-conquer.})
+
+\item Problem 3.1-1 in CLRS. \\
+We shall prove that that $max(f(n),g(n)) = \Theta(f(n)+g(n))$. 
+
+Since $f(n)$ and $g(n)$ are nonnegative functions $f(n) \leq f(n)+g(n)$ and  $g(n) \leq f(n)+g(n)$. Therefore, $max(f(n),g(n)) = O(f(n)+g(n))$.
+
+Note that $f(n) + g(n) \leq 2*max(f(n),g(n))$ because $f(n) \leq max(f(n),g(n))$ and
+$g(n) \leq max(f(n),g(n))$ by definition.
+
+Also, the definition of $\Omega$ if there exists a positive constant $k$ which $0 \leq cg(n) \leq f(n) \forall n \geq n_0$. In this case, $n_0 = 0 and k = 2$.
+
+Since we proved that $max(f(n),g(n)) = \Omega(f(n)+g(n))$ and $max(f(n),g(n)) = O(f(n)+g(n))$ then by definition $max(f(n),g(n)) = \Theta(f(n)+g(n))$.
+
+\item Problem 3-2 (Big Oh, Big Omega, and Big Theta only) in CLRS.
+
+
+\begin{table}[h!]
+\centering
+ \begin{tabular}{|c c c c c|} 
+ \hline
+ $A$ & $B$ & $O$ & $\Omega$ & $\Theta$\\ [0.5ex] 
+ \hline\hline
+ $lg^{k}n$ &  $n^\epsilon$ & No & Yes & No\\ 
+ $n^k$ & $c^n$ & Yes & No &No\\
+ $\sqrt[]{n}$ & $n^{\sin{n}}$ & No & No &No\\
+  $2^n$&  $2^{n/2}$ & Yes & Yes &Yes\\
+$n^{lg{c}}$ & $c^{lg{n}}$ & Yes & No &No\\ 
+$lg(n!)$ & $lg(n^n)$  & Yes & No &No\\[1ex] 
+ \hline
+ \end{tabular}
+\end{table}
+
+
+\item Problem 3-4 (parts c,d,e,g) in CLRS.
+
+\end{enumerate}
+
+\end{document}
