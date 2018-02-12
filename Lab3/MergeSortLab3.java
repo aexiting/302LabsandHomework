@@ -100,7 +100,41 @@ class MergeSortLab3
       MergeWithAllocation(integerArray,startIndex,midIndex,endIndex);
     }
     }
-
-    void NonRecursiveMergeSortWithoutAllocation(int[] integerArray) {
+    private int min(int x,int y){
+      if(x<y){
+        return x;
+      }
+      else{
+        return y;
+      }
     }
-};
+    void NonRecursiveMergeSortWithoutAllocation(int[] integerArray) {
+      int curr_size;  // For current size of subarrays to be merged
+                     // curr_size varies from 1 to n/2
+     int left_start; // For picking starting index of left subarray
+                     // to be merged
+    int n = integerArray.length;
+     // Merge subarrays in bottom up manner.  First merge subarrays of
+     // size 1 to create sorted subarrays of size 2, then merge subarrays
+     // of size 2 to create sorted subarrays of size 4, and so on.
+     for (curr_size=1; curr_size<=n-1; curr_size = 2*curr_size)
+     {
+         // Pick starting point of different subarrays of current size
+         for (left_start=0; left_start<n-1; left_start += 2*curr_size)
+         {
+             // Find ending point of left subarray. mid+1 is starting
+             // point of right
+             int mid = left_start + curr_size - 1;
+
+             int right_end = min(left_start + 2*curr_size - 1, n-1);
+
+             // Merge Subarrays arr[left_start...mid] & arr[mid+1...right_end]
+             merge(arr, left_start, mid, right_end);
+         }
+  }
+          MergeWithAllocation(integerArray,leftStart,mid,rightend);
+    }
+
+}
+}
+}

@@ -1,0 +1,10 @@
+Adam Pettway
+
+I believe that the technique that will be the most effective would be removing the
+recursive calls. Since every recursive call is added to a stack which uses more space
+than the arrays and need to be kept track of as well.
+
+I will have a few tests:
+Empty arrays
+Array with a single item
+Array with odd number

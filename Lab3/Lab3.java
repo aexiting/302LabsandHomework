@@ -7,16 +7,18 @@ class Lab3 {
       MergeSortLab3 mergeSortLab3 = new MergeSortLab3();
       //mergeSortLab3.RecursiveMergeSortWithAllocation(arrayToSort, 0, arrayToSort.length-1);
       //note that the array size is 10
-      mergeSortLab3.RecursiveMergeSortWithoutAllocation(arrayToSort, 0, arrayToSort.length-1);
-      System.out.println(Arrays.toString(arrayToSort));
+      //mergeSortLab3.RecursiveMergeSortWithoutAllocation(arrayToSort, 0, arrayToSort.length-1);
+      //mergesorts.NonRecursiveMergeSortWithoutAllocation(arrayToSort,0,arrayToSort)
 
+      mergeSortLab3.NonRecursiveMergeSortWithoutAllocation(arrayToSort);
+      System.out.println(Arrays.toString(arrayToSort));
     }
 
     public void RunTimeSuite() {
         System.out.printf("Timing mergesorts...%n");
         System.out.printf("%15s %8s %8s %8s%n", "n", "Aloc.", "NoAloc.", "NoRec.");
 
-        for (int size = 1; size > 0 && size < 2000000000; size=size + (int)((size+1)*0.5)) {
+       for (int size = 1; size > 0 && size < 2000000000; size= 2*size) {
             MergeSortLab3 mergeSortLab3 = new MergeSortLab3();
             int[] arrayToSort = new int[size];
 
