@@ -1,0 +1,11 @@
+Adam Pettway
+
+When I implemented the BadPartition function, it originally passed but after running it multiple times,
+it would fail half of the time.
+
+The linear sort seemed to the most fast at .11 seconds when the size was 16384. However the Bad selection sort
+had finished after .24. Also the random Selection sort had a StackOverflow error when n = 32768.
+
+I believe the Linear Partitioning would be the fastest since it makes sure that you are making the least amount of
+accesses to the array. To calculate the medians you need n accesses to find the medians of 5 element sequences then you need n/5
+to compare the medians and this guarantees that there you only need n/2 accesses to find the ith smallest element.  

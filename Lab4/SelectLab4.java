@@ -125,8 +125,7 @@ class SelectLab4 {
       q = LinearPartition(A, p, r);
     }
     q = r;
-    if(q == i)
-    return A[q];
+    if(q == i) return A[q];
     else if( q > i) return Select(A,p,q-1,i,partitioner);
     else return Select(A,q+1,p,i,partitioner);
 
@@ -199,12 +198,20 @@ class SelectLab4 {
 
   static void RunPartitionTest() {
     int pivot = 3;
-    int startIndex = 0;
-    int[] integerArray = {6,1,4,5,3};
-    int endIndex = integerArray.length - 1;
+    int startIndex = 1;
+    int[] integerArray = {6,1,4,5,3,9,10,6,4};
+    int[] integerArrayL = {3,4,31,2,7,8,10,45};
+    int[] integerArrayM = {1,4,31,2,7,8,10,45};
+    int endIndex = 3;
     int q = Partition(integerArray,startIndex,endIndex);
     boolean passed =  IsPartitionedAroundPivot(integerArray, startIndex, endIndex, pivot);
-    System.out.println("Partition test: " + PassOrFailString(passed));
+    System.out.println("Partition test (median): " + PassOrFailString(passed));
+    pivot = 31;
+    passed =  IsPartitionedAroundPivot(integerArrayL, startIndex, endIndex, pivot);
+    System.out.println("Partition test (largest): " + PassOrFailString(passed));
+    pivot = 1;
+    passed =  IsPartitionedAroundPivot(integerArrayM, startIndex, endIndex, pivot);
+    System.out.println("Partition test (smallest): " + PassOrFailString(passed));
   }
 
   static void RunTestSuite()
