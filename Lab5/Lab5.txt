@@ -1,0 +1,5 @@
+The linear time method would be faster since the median would only need to switch n/2 times
+since the median has half of the elements greater than it. When it is median, assuming all
+elements have a equal chance of being chosen as the median, there may be cases where a number
+closer to the maximum and minimum will be chosen. In these cases there will be more than
+n/2 switches than the actual median by definition.

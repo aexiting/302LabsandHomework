@@ -1,0 +1,54 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+
+\begin{document}
+\noindent{COSC 302: Analysis of Algorithms --- Spring 2018}
+
+\noindent{Prof. Darren Strash}
+
+\noindent{Colgate University} \\
+
+\noindent{\bf Problem Set 5 --- Heaps, Non-comparison sorts, Red-black trees, Hashing} \\
+\noindent {\bf Due by 4:30pm Friday, Mar. 9, 2018 as a single pdf via Moodle (either generated via \LaTeX{}, or concatenated photos of your work). Late assignments are not accepted.} \\
+
+This is an \emph{individual} assignment: collaboration (such as discussing problems and brainstorming ideas for solving them) on this assignment is highly encouraged, but the work you submit must be your own. Give information only as a tutor would: ask questions so that your classmate is able to figure out the answer for themselves. It is unacceptable to share any artifacts, such as code and/or write-ups for this assignment. If you work with someone in close collaboration, you must mention your collaborator on your assignment.
+
+\emph{Suggested practice problems, from CLRS:} Ch 11.1 (1 and 2); 11.2-3; 12.2 (3, 4, and 5); 12.3-5; 13.3 (1, 2, and 4) 
+
+\begin{enumerate}
+
+\item In this problem, we will investigate $d$-ary max-heaps: A $d$-ary heap is one in which each node has at most $d$ children, whereas, in a binary heap, each node has at most $2$ children.
+\begin{enumerate}
+\item Describe how to store/represent a $d$-ary heap in an array.
+
+\item What is the height of a $d$-ary heap in terms of $d$ and $n$?
+
+\item Re-write function \textsc{Parent}($i$) for $d$-ary heaps, and give a new function \textsc{Child}($i$,$j$) that gives the $j$-th child of node $i$ (where $1\leq j \leq d$).
+
+\item Describe, and give pseudocode for, the algorithm \textsc{Max-Heapify}($A$,$i$) for $d$-ary heaps and give a tight analysis for the worst-case running time of your algorithm.
+
+
+\item Describe (semi-formally) how to implement \textsc{Max-Heapify}($A$,$i$) in $O((\log_dn)\lg d)$ time. \emph{(Hint: you need auxiliary data structures; the heap itself is not sufficient.)}
+\end{enumerate}
+
+
+\item \textbf{(From homework 4, skip if already submitted)} Problem 8.2-4 from CLRS: Describe (semi-formally) an algorithm that, given $n$ integers in the range $0$ to $k$, preprocesses its input and then answers any query about how many of the $n$ integers fall into a range $[a..b]$ in $O(1)$ time. Your algorithm should use $\Theta(n + k)$ preprocessing time.
+
+\item Problem 13.3-5 from CLRS. (Describe semi-formally.) \emph{(Hint: Follow the structure for an invariant.)}
+
+\item \textbf{(Previous exam question)} Let $A[1..n]$ be an array of non-integers taken from some set $K$ of size $k>1$. \emph{(Note: For this problem, you are not given the set $K$ or $k$; this is only to illustrate that there are $k$ distinct non-integer numbers. We only have access to elements through $A$. Further, note that $k$ may be small or large: from constant to even larger than $n$.)}
+\begin{enumerate}
+\item Describe an algorithm that sorts $A$ in expected time $O(n + k\lg k)$, and describe why it has this running time. 
+
+\item What is the worst-case running time of your algorithm? Justify your answer.
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
