@@ -23,8 +23,32 @@
 \noindent{\bf Problem Set 2 --- Order of Growth and Asymptotic Analysis} 
 
 \begin{enumerate}
-\item Describe a $\Theta(n\log n)$-time algorithm that, given an array $A$ of $n$ integers and another integer $x$, determines whether or not there exist two elements in $A$ whose sum is exactly $x$. (\emph{Hint: do not use divide-and-conquer.})
+\item
+\begin{algorithm}[!h]
+\textsc{Pair-Finder}($A$, $x$)
+\begin{algorithmic}[1]
+\State mergeSort($A$)
+\State $left = 0$
+\State $right = A.length-1$
+\While{$left < right$}
+\If{$A[left]+A[right]=x$}
+\State \Return{\textsc{True}}
+\If{$A[left]+A[right] < x$}
+	\State $left = left+1$
+	\EndIf
+\If{$A[left]+A[right] > x$}
+	\State $right = right-1$
+	\EndIf
+\EndIf
+\EndWhile
+\State \Return{\textsc{False}}
+\end{algorithmic}
+\label{algorithm:linear-search}
+\end{algorithm} 
 
+Invariant: $left < right$ and $A[1...left-1]$ and $A[right...n]$ cannot be used to find the sum $x$. \\
+Maintance: If $A[left] + A[right] = x$ then the loop terminates. If $x$ is smaller then it will decrease the right pointer and increase the left pointer if the $x$ is smaller than the current sum.
+Termination: If there is a pair then the loop terminates and the function returns true. Otherwise we reach the point there $left > right$. Which means no such pair exists so the loop terminates and the False is returned. 
 \item Problem 3.1-1 in CLRS. \\
 We shall prove that that $max(f(n),g(n)) = \Theta(f(n)+g(n))$. 
 
@@ -40,7 +64,7 @@ Since we proved that $max(f(n),g(n)) = \Omega(f(n)+g(n))$ and $max(f(n),g(n)) = 
 \item Problem 3-2 (Big Oh, Big Omega, and Big Theta only) in CLRS.
 
 
-\begin{table}[h!]
+\begin{table}[H]
 \centering
  \begin{tabular}{|c c c c c|} 
  \hline
@@ -58,7 +82,17 @@ $lg(n!)$ & $lg(n^n)$  & Yes & No &No\\[1ex]
 
 
 \item Problem 3-4 (parts c,d,e,g) in CLRS.
-
+\begin{enumerate}
+\item[c]
+$f(n) = O(g(n)) \implies lg(f(n)) = O(g(n))$. We will prove this directly.
+By defition of upper bound: $f(n) \leq g(n)$ and by definition of log  $lg(f(n)) \leq lg(g(n))$ which means that  $lg(f(n)) = O(lg(g(n)))$ 
+\item[d]
+Suppose that $f(n) = 2n$ and $g(n) = lg n$. Then by definition, $f(n) = O(g(n)$ when $c = 2$. However, $2^{2n} \neq O(2^{n})$ since there is no $c$ that works so that so that $f(n) \leq g(n)$ for all $n$.  Therefore the statement is not always true.
+\item[e]
+Suppose that $f(n) = \frac{1}{n}$ thus $(f(n))^2 = \frac{1}{n^2}$. So the statement  $f(n) = O((f(n))^2)$ is a contradiction since there exists no $c$ that works so that for all $n$ $f(n) \leq (f(n))^2$. Therefore the statement is not true.
+\item[g]
+Suppose that $f(n) = 2^n$  so we must show that $2^n \leq  c*2^{\frac{n}{2}}$ If we simplify this we get $n \leq c*\frac{n}{2}$. But there exists no $c > 1$ where $n \leq c*\frac{n}{2}$ for all $n$. Therefore the statement is not true.
+\end{enumerate}
 \end{enumerate}
 
 \end{document}

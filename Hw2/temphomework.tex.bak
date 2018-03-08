@@ -1,0 +1,266 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{tikz-qtree}
+\newtheorem{theorem}{Theorem}[section]
+
+\begin{document}
+\noindent{COSC 302: Analysis of Algorithms --- Spring 2018}
+
+\noindent{Adam Pettway}
+
+\noindent{Colgate University} 
+
+\noindent{\bf Problem Set 2 --- Order of Growth and Asymptotic Analysis} 
+\begin{algorithm}[!h]\begin{algorithm}[!h]
+\textsc{Hobby-Majority}($A$)
+\begin{algorithmic}
+\If{ $A.length = 1$}
+\State \Return $A[1]$
+\EndIf
+\State $x \gets$ Hobby-Majority($[1...n/2]$)
+\State $y \gets$ Hobby-Majority($A[(n/2)+1...n]$)
+\If{SameHobby($x,y$)}
+\State \Return x
+\Else
+    \If{x = NULL}
+    \State \Return y
+    \EndIf
+    \If{y = NULL}
+    \State \Return x
+    \EndIf
+\EndIf \\
+\Return NULL
+\end{algorithmic}
+\end{algorithm}
+
+
+\textsc{Hobby-Majority}($A$)
+\begin{algorithmic}
+\If{ $A.length = 1$}
+\State \Return $A[1]$
+\EndIf
+\State $x \gets$ Hobby-Majority($[1...n/2]$)
+\State $y \gets$ Hobby-Majority($A[(n/2)+1...n]$)
+\If{SameHobby($x,y$)}
+\State \Return x
+\Else
+    \If{x = NULL}
+    \State \Return y
+    \EndIf
+    \If{y = NULL}
+    \State \Return x
+    \EndIf
+\EndIf \\
+\Return NULL
+\end{algorithmic}
+\end{algorithm}
+
+
+\begin{enumerate}
+\item
+\textsc{Linear-Median}($A$, $x$)
+\begin{algorithmic}[1]
+\State $median \gets Median(A)$
+\State $w_{<M} \gets 0$
+\State $Array_{<M} \gets \emptyset$
+\State $Array_{>M} \gets \emptyset$
+\If {$A.length = 1$}
+\State \Return $1$
+\EndIf
+\For{$j = 1$ \textbf{to} $A$.length}
+\If{$A[j] \leq median$}
+\State $Array_{<M} = Array_{<M} + A[j]$
+\State $w_{<M} = w_{<M} + w(A[i])$  
+\Else 
+\State $Array_{>M} = Array_{>M} + A[j]$
+\EndIf
+\EndFor
+\If{$x + w_{<M} > \frac{1}{2}$}
+\State Linear-Median($Array_{<M}$,$x$)
+\Else
+\State Linear-Median($Array_{>M}$,$w_{<M}$)
+\EndIf
+\end{algorithmic}
+\item Invariant: The median is also in the array $A$ and $x$ is the total weight of all elements than the median the previous call's sub-array.\\
+
+Initialization: For the first call $A$ is the total array and the weight of elements less than the median is $0$.\\
+
+Maintenance: Suppose that $x + w_{<M} > \frac{1}{2}$ since the median is in A, it must be in either $Array_{<M}$ or $Array_{>M}$ since we iterated through $A$ and placed the median in one of those arrays. Since the total weight of all elements less than the any element is greater than $\frac{1}{2}$ then it must not be in array $Array_{>M}$ and it will be in $Array_{<M}$. Otherwise it will be in $Array_{>M}$ since we do not remove any elements from the array. \\
+
+Termination: The program terminates when the array is length of 1 since the size of $A$ decreases for every recurse since neither arrays can contain the same elements. The recurrence is $T(n) = T(n/2) + \Theta(n)$ which equals $\Theta(n)$.
+\item The trees go left to right starting with the upper right one.
+
+\item Question 3.
+\begin{enumerate}
+\item[a] There is a $\frac{1}{n}$ chance of the number being the maximum. 
+\end{enumerate}
+\end{enumerate}
+\tikzset{every tree node/.style={minimum width=2em,draw,circle},
+         blank/.style={draw=none},
+         edge from parent/.style=
+         {draw,edge from parent path={(\tikzparentnode) -- (\tikzchildnode)}},
+         level distance=1.5cm}
+\begin{tikzpicture}
+
+\Tree
+[.10     
+    [.9
+     [.5
+		[.2
+             \edge[blank]; 
+             \edge[blank]; \node[blank]{};
+         ]
+         [.1
+             \edge[blank]; 
+             \edge[blank]; \node[blank]{};
+         ]
+         ]     
+     [.3
+          [.0
+             \edge[blank]; 
+             \edge[blank]; \node[blank]{};
+         ]
+         [
+             \edge[blank]; 
+             \edge[blank]; \node[blank]{};
+         ]
+         ]
+    ]
+    [.6 
+	[.8
+	 \edge[blank]; 
+             \edge[blank]; \node[blank]{};]     
+     [.7
+             \edge[blank]; 
+             \edge[blank]; \node[blank]{};
+         ]
+    ]
+]
+\end{tikzpicture}
+\tikzset{every tree node/.style={minimum width=2em,draw,circle},
+         blank/.style={draw=none},
+         edge from parent/.style=
+         {draw,edge from parent path={(\tikzparentnode) -- (\tikzchildnode)}},
+         level distance=1.5cm}
+\begin{tikzpicture}
+
+\Tree
+[.10     
+    [.9
+     [.5
+		[.2
+             \edge[blank]; 
+             \edge[blank]; \node[blank]{};
+         ]
+         [.1
+             \edge[blank]; 
+             \edge[blank]; \node[blank]{};
+         ]
+         ]     
+     [.3
+          [.0
+             \edge[blank]; 
+             \edge[blank]; \node[blank]{};
+         ]
+         [
+             \edge[blank]; 
+             \edge[blank]; \node[blank]{};
+         ]
+         ]
+    ]
+    [.8 
+	[.6
+	 \edge[blank]; 
+             \edge[blank]; \node[blank]{};]     
+     [.7
+             \edge[blank]; 
+             \edge[blank]; \node[blank]{};
+         ]
+    ]
+]
+\end{tikzpicture}
+\tikzset{every tree node/.style={minimum width=2em,draw,circle},
+         blank/.style={draw=none},
+         edge from parent/.style=
+         {draw,edge from parent path={(\tikzparentnode) -- (\tikzchildnode)}},
+         level distance=1.5cm}
+\begin{tikzpicture}
+
+\Tree
+[.9     
+    [.5
+     [.2
+		[.1
+             \edge[blank]; 
+             \edge[blank]; \node[blank]{};
+         ]
+         [.0
+             \edge[blank]; 
+             \edge[blank]; \node[blank]{};
+         ]
+         ]     
+     [.3
+      \edge[blank]; 
+             \edge[blank]; \node[blank]{};
+      ]
+    ]
+    [.8 
+	[.7
+	 \edge[blank]; 
+             \edge[blank]; \node[blank]{};]     
+     [.6
+             \edge[blank]; 
+             \edge[blank]; \node[blank]{};
+         ]
+    ]
+]
+\end{tikzpicture}
+
+\tikzset{every tree node/.style={minimum width=2em,draw,circle},
+         blank/.style={draw=none},
+         edge from parent/.style=
+         {draw,edge from parent path={(\tikzparentnode) -- (\tikzchildnode)}},
+         level distance=1.5cm}
+\begin{tikzpicture}
+
+\Tree
+[.9     
+    [.5
+     [.4
+		[.1
+             \edge[blank]; 
+             \edge[blank]; \node[blank]{};
+         ]
+         [.2
+             \edge[blank]; 
+             \edge[blank]; \node[blank]{};
+         ]
+         ]     
+     [.3
+      \edge[blank]; 
+             \edge[blank]; \node[blank]{};
+      ]
+    ]
+    [.8 
+	[.7
+	 \edge[blank]; 
+             \edge[blank]; \node[blank]{};]     
+     [.6
+             \edge[blank]; 
+             \edge[blank]; \node[blank]{};
+         ]
+    ]
+]
+\end{tikzpicture}
+
+\end{document}
