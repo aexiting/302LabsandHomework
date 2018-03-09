@@ -81,22 +81,12 @@ The worst-case running time would be $\Theta(log_d (n(d-1)+1)-1)$ if the value f
 \item \textbf{(From homework 4, skip if already submitted)} Problem 8.2-4 from CLRS: Describe (semi-formally) an algorithm that, given $n$ integers in the range $0$ to $k$, preprocesses its input and then answers any query about how many of the $n$ integers fall into a range $[a..b]$ in $O(1)$ time. Your algorithm should use $\Theta(n + k)$ preprocessing time.
 \begin{algorithm}
 \begin{algorithmic}[1]
-\Function{Pre-Process}{$A$,$k$}
+\Function{Modified-Counting-Sort}{$A$,$k$}
 \State $C[0...k]$
-\For{$i = 0$ to $k$}
-\State $C[i] = 0$
+\For{$x \gets 1$ to $k$}
+\State $C[x] \gets 0$
 \EndFor
-\For{$j = 1$ to $A.length$}
-\State $C[A[j]] = C[A[j]]+1$
-\EndFor
-\For{$i = 1$ to $k$}
-\State $C[i] = C[i]+C[i-1]$
-\EndFor
-\State $A = C$
-\EndFunction
-\Function{Range}{$A$,$k$,$a$,$b$}
-\State Pre-Process($A$,$k$)
-\State \Return $A[b] - A[a]$
+\
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
