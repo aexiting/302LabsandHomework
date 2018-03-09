@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.80.0 (TeX Live 2015/Debian) (rev 5238)  (format=lualatex 2018.1.28)  9 MAR 2018 01:03
+This is LuaTeX, Version beta-0.80.0 (TeX Live 2015/Debian) (rev 5238)  (format=lualatex 2018.1.28)  9 MAR 2018 01:31
  restricted \write18 enabled.
 **hw05.tex
 (./hw05.tex
@@ -691,22 +691,22 @@ LaTeX Info: Redefining \nameref on input line 13.
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 118.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 118.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 110.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 110.
  (./hw05.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 118.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 118.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 110.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 110.
 Package rerunfilecheck Info: File `hw05.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 118.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 110.
 )
 
 Here is how much of LuaTeX's memory you used:
- 18687 strings out of 495004
+ 18684 strings out of 495004
  100000,460012 words of node,token memory allocated
- 353 words of node memory still in use:
+ 352 words of node memory still in use:
    5 hlist, 2 vlist, 2 rule, 2 glue, 3 kern, 44 glue_spec, 1 write nodes
-   avail lists: 1:8,2:35,3:158,4:1348,5:244,6:2016,7:19,8:9,9:156,10:106
+   avail lists: 1:8,2:35,3:140,4:1114,5:200,6:1537,7:19,8:9,9:139,10:78
  21566 multiletter control sequences out of 65536+600000
  30 fonts using 1190627 bytes
  62i,8n,71p,431b,485s stack positions out of 5000i,500n,10000p,200000b,100000s
@@ -720,10 +720,10 @@ t/fonts/type1/public/amsfonts/cm/cmr10.pfb><</usr/share/texlive/texmf-dist/fonts
 ublic/amsfonts/cm/cmr8.pfb><</usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy10.pfb><</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmti10.pfb>
-Output written on hw05.pdf (2 pages, 125229 bytes).
+Output written on hw05.pdf (2 pages, 121964 bytes).
 
-PDF statistics: 73 PDF objects out of 1000 (max. 8388607)
- 58 compressed objects within 1 object stream
- 16 named destinations out of 1000 (max. 131072)
+PDF statistics: 70 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
+ 13 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
