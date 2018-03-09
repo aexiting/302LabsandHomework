@@ -76,6 +76,8 @@ This height is $\Theta(log_d (n(d-1)+1)-1)$.
 
 The worst-case running time would be $\Theta(log_d (n(d-1)+1)-1)$ if the value floats to the bottom of the tree. If the tree is balanced.
 \item Describe (semi-formally) how to implement \textsc{Max-Heapify}($A$,$i$) in $O((\log_dn)\lg d)$ time. \emph{(Hint: you need auxiliary data structures; the heap itself is not sufficient.)}
+
+One can make the function take $O((\log_dn)\lg d)$ if you store the children of each node using a binary search tree. Finding the largest between i and the children would take $O(lg(d))$ since the tree would have $d$ nodes and in the worst case bubble down to the leaves which would be $log_d(n)$ recursive calls. During each call you would traverse the children in $O(lg(n))$ which is $log_d(n)lg(n)$.
 \end{enumerate}
 
 \item \textbf{(From homework 4, skip if already submitted)} Problem 8.2-4 from CLRS: Describe (semi-formally) an algorithm that, given $n$ integers in the range $0$ to $k$, preprocesses its input and then answers any query about how many of the $n$ integers fall into a range $[a..b]$ in $O(1)$ time. Your algorithm should use $\Theta(n + k)$ preprocessing time.
@@ -102,91 +104,8 @@ The worst-case running time would be $\Theta(log_d (n(d-1)+1)-1)$ if the value f
 \end{algorithm}
 
 \item Problem 13.3-5 from CLRS. (Describe semi-formally.) \emph{(Hint: Follow the structure for an invariant.)}
-\begin{enumerate}
-\item[13.3]
-\begin{enumerate}
-\item[(a)]
-\tikzset{every tree node/.style={minimum width=1em,draw,circle},
-         blank/.style={draw=none},
-         edge from parent/.style=
-         {draw,edge from parent path={(\tikzparentnode) -- (\tikzchildnode)}},
-         level distance=1cm}
-\begin{tikzpicture}
-\Tree
-[.c(k-1)B     
-    [.a(k)R \edge[]; \node[blank]{\alpha(k)};
-              [.b(k)R
-             \edge[]; \node[blank]{\beta(k)};
-               \edge[]; \node[blank]{\gamma(k)};]
-         ]
-    [.d(k)R 
-    \edge[]; \node[blank]{\delta(k)};
-               \edge[]; \node[blank]{\epsilon(k)};
-    ]
-]
-\end{tikzpicture}\\
-\tikzset{every tree node/.style={minimum width=1em,draw,circle},
-         blank/.style={draw=none},
-         edge from parent/.style=
-         {draw,edge from parent path={(\tikzparentnode) -- (\tikzchildnode)}},
-         level distance=1cm}
-\begin{tikzpicture}
-\Tree
-[.c(k-1)R     
-    [.a(k-1)B \edge[]; \node[blank]{\alpha(k)};
-              [.b(k)R
-             \edge[]; \node[blank]{\beta(k)};
-               \edge[]; \node[blank]{\gamma(k)};]
-         ]
-   [.d(k-1)B
-    \edge[]; \node[blank]{\delta(k)};
-               \edge[]; \node[blank]{\epsilon(k)};
-    ]
-]
-\end{tikzpicture}\\
-\item[(b)]
-\tikzset{every tree node/.style={minimum width=1em,draw,circle},
-         blank/.style={draw=none},
-         edge from parent/.style=
-         {draw,edge from parent path={(\tikzparentnode) -- (\tikzchildnode)}},
-         level distance=1cm}
-\begin{tikzpicture}
-\Tree
-[.c(k-1)B     
-    [.b(k)R    [.a(k)R
-             \edge[]; \node[blank]{\alpha(k)};
-               \edge[]; \node[blank]{\beta(k)};]
-    \edge[]; \node[blank]{\gamma(k)};
-         ]
-    [.d(k)R 
-    \edge[]; \node[blank]{\delta(k)};
-               \edge[]; \node[blank]{\epsilon(k)};
-    ]
-]
-\end{tikzpicture}\\
-\tikzset{every tree node/.style={minimum width=1em,draw,circle},
-         blank/.style={draw=none},
-         edge from parent/.style=
-         {draw,edge from parent path={(\tikzparentnode) -- (\tikzchildnode)}},
-         level distance=1cm}
-\begin{tikzpicture}
-\Tree
-[.c(k-1)R     
-    [.b(k-1)B    [.a(k)R
-             \edge[]; \node[blank]{\alpha(k)};
-               \edge[]; \node[blank]{\beta(k)};]
-    \edge[]; \node[blank]{\gamma(k)};
-         ]
-    [.d(k-1)B 
-    \edge[]; \node[blank]{\delta(k)};
-               \edge[]; \node[blank]{\epsilon(k)};
-    ]
-]
-\end{tikzpicture}\\
-\end{enumerate}
-\item[13.6]
 
-\end{enumerate}
+
 \item \textbf{(Previous exam question)} Let $A[1..n]$ be an array of non-integers taken from some set $K$ of size $k>1$. \emph{(Note: For this problem, you are not given the set $K$ or $k$; this is only to illustrate that there are $k$ distinct non-integer numbers. We only have access to elements through $A$. Further, note that $k$ may be small or large: from constant to even larger than $n$.)}
 \begin{enumerate}
 \item Describe an algorithm that sorts $A$ in expected time $O(n + k\lg k)$, and describe why it has this running time. 
