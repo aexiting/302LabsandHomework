@@ -6,7 +6,11 @@ grey node as a neighbor.
 
 
 After coding based on this algorithm, I had an issue with the first test case. It had 10 nodes and should have been unicyclic however, it said it wasn't. I printed out the
-counts and it seems that it's double counting the one cycle, Even though it removes it after finding it. It finds another cases where it finds a visted node. So I decided to
+counts and it seems that it's double counting the one cycle, Even though it removes it after finding it. It finds another cases where it finds a visted node. I assumed it was a
+error with removing the edge properly so I printed out all adjlists for each node to see if it changed properly. It worked fine so I checked if all the nodes started
+as white at the beginning of the search.
+
+So I decided to
 check if there is a case where you can discover a grey node without a cycle so I printed out the color of each node for each step.
 
 After printing the colors of the node with each step I noticed that after finding the second cycle, the source node starts with the color of white rather than grey.
