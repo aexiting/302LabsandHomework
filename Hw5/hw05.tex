@@ -13,13 +13,11 @@
 \begin{document}
 \noindent{COSC 302: Analysis of Algorithms --- Spring 2018}
 
-\noindent{Prof. Darren Strash}
+\noindent{Adam Pettway}
 
 \noindent{Colgate University} 
 
 \noindent{\bf Problem Set 5 --- Heaps, Non-comparison sorts, Red-black trees, Hashing} 
-
-\emph{Suggested practice problems, from CLRS:} Ch 11.1 (1 and 2); 11.2-3; 12.2 (3, 4, and 5); 12.3-5; 13.3 (1, 2, and 4) 
 
 \begin{enumerate}
 
@@ -94,7 +92,7 @@ One can make the function take $O((\log_dn)\lg d)$ if you store the children of 
 \For{$i = 1$ to $k$}
 \State $C[i] = C[i]+C[i-1]$
 \EndFor
-\State $A = C$
+\State $A \gets C$
 \EndFunction
 \Function{Range}{$A$,$k$,$a$,$b$}
 \State Pre-Process($A$,$k$)
@@ -104,7 +102,12 @@ One can make the function take $O((\log_dn)\lg d)$ if you store the children of 
 \end{algorithm}
 
 \item Problem 13.3-5 from CLRS. (Describe semi-formally.) \emph{(Hint: Follow the structure for an invariant.)}
-
+The base case is two nodes. When a node is inserted due to line 16 the code, the node always starts as red. RB-Insert-Fixup is called and no violations are found. There are now three cases:
+\begin{enumerate}
+\item The first case is the newest node being added to a black node in which there is no violation an the newest node is red.
+\item The second case is another red node is attached to a red parent and the uncle is black. Then there is a rotation. In either case of being the right or left child, the parent node become the new grandparent and is colored black. Thus the previous grand parent becomes the right child and is colored red. And the newest node stays red and is placed as the left child. In this case there's 2 red nodes.
+\item the third case is when the grand parent is a black node with two red children. Another red node is added as the black's grandchild which is red.This causes a violation so if the uncle of the newest node is red, both the uncle and the parent of the newest node become black and the grandparent node becomes red. Thus, the newest node and the grandparent node leads to 2 red nodes.
+\end{enumerate}
 \end{enumerate}
 
 \end{document}
