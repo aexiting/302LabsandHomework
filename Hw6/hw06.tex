@@ -26,7 +26,8 @@ This is an \emph{individual} assignment: collaboration (such as discussing probl
 \item \textbf{(From problem set 5; previous exam question)} Let $A[1..n]$ be an array of non-integers taken from some set $K$ of size $k>1$. \emph{(Note: For this problem, you are not given the set $K$ or $k$; this is only to illustrate that there are $k$ distinct non-integer numbers. We only have access to elements through $A$. Further, note that $k$ may be small or large: from constant to even larger than $n$.)}
 \begin{enumerate}
 \item 
-An algorithm that sorts $A$ is described as a counting sort that iterates through the $A$, when a new key is found a node with a varible count is created and inserted in the binary search tree $B$. In the case of key we have already found we will increment the count value in the appropriate node. Going through the array will take $n$ time. Then for $k$ disinct keys we will create a mode which will take at most $lg k$ time. So, the entire algorithm will take $O(n + klg(k))$. 
+An algorithm that sorts $A$ is described as a counting sort that iterates through the $A$, when a new key, $k$ is found a node with a varible count which contains $k$, when then hash the key to hash table $H$. It is created and inserted in the binary search tree $B$. If In the case of key we have already found we increment $H[k]$ by one. If there is collision in the table, the key is added to a linked list. After the array is exausted, We will traverse the array in order, then access the hash table to find the amount each node's value repeats and then add them to the output array. Going through the array will take $n$ time. Then for $k$ disinct keys we will create a mode which will take at most $lg k$ time. So, the entire algorithm will take $O(n + klg(k))$.
+ 
 \item 
 The worst-case running time for my algorithm would be $O(n lg n)$. Since there would be at most $n$ distinct keys where there are no repeated values.
 \end{enumerate}
@@ -46,12 +47,16 @@ We will find all cops and robbers by using a modified breadth-first search. Sinc
 When a edge is added the amount of strongly connected components can either stay the same if the edge is incident to two nodes in the same component or decrease by $1$ if the edge is added between $2$ components.
  
 \item 
+One DFS will not show if it is semiconnected or not. Only that it is connected. We need to do a DFS-Visit on not visited nodes to see if they're connected or not.
+
 \begin{algorithm}
 \begin{algorithmic}[1]
 \Function{Semiconnected-Check}{$G$}
 \State $G_R \gets$ \Call{Strongly-Connected-Components}{$G$}
-\State $s \gets G_R[0]$
+\State $G_J \gets$ \Call{Topological-Sort}{$G_R$}
+\State $G_{JT} \gets$ \Call{Transpose-Graph}{$G_R$}
 \State \Call{DFS-Visit}{$G_R$,$s$}
+\State \Call{DFS-Visit}{$G_R$,$s_T$}
 \ForAll{$u \in G_R$}
 \If {$u.color == WHITE$}
 \State \Return false
