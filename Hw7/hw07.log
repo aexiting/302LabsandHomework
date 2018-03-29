@@ -1,9 +1,11 @@
-This is LuaTeX, Version beta-0.80.0 (TeX Live 2015/Debian) (rev 5238)  (format=lualatex 2018.1.28)  28 MAR 2018 00:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.2.2)  28 MAR 2018 08:07
+entering extended mode
  restricted \write18 enabled.
+ %&-line parsing enabled.
 **hw07.tex
 (./hw07.tex
 LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 1 language(s) loaded.
+Babel <3.9q> and hyphenation patterns for 5 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
@@ -101,33 +103,35 @@ Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
 Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 
+
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
 Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX detected.
+Package ifluatex Info: LuaTeX not detected.
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
 Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
 Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
-Package: luatex-loader 2010/03/09 v0.4 Lua module loader (HO)
-
-(/usr/share/texlive/texmf-dist/scripts/oberdiek/oberdiek.luatex.lua)
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-\pdftexcmds@toks=\toks25
 Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
-Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO)
-
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
 Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
 Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
 )
@@ -143,7 +147,7 @@ Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks26
+\KV@toks@=\toks25
 )
 (/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
@@ -207,15 +211,15 @@ File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
-2.
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
 )
 \Hy@SectionHShift=\skip50
 )
 \c@theorem=\count109
 
 (./hw07.aux)
-\openout1 = hw07.aux
+\openout1 = `hw07.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
@@ -247,42 +251,37 @@ LaTeX Info: Redefining \nameref on input line 10.
 
 (./hw07.out) (./hw07.out)
 \@outlinefile=\write3
+\openout3 = `hw07.out'.
 
-\openout3 = hw07.out
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 32.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 30.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 32.
-
-(./hw07.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 32.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 32.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 30.
+ (./hw07.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 30.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 30.
 Package rerunfilecheck Info: File `hw07.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 32.
-)
-
-Here is how much of LuaTeX's memory you used:
- 5198 strings out of 495004
- 100000,184870 words of node,token memory allocated
- 332 words of node memory still in use:
-   5 hlist, 2 vlist, 2 rule, 2 glue, 1 kern, 44 glue_spec, 1 write nodes
-   avail lists: 2:19,3:40,4:622,5:137,6:1785,7:20,8:6,9:75,10:140
- 8664 multiletter control sequences out of 65536+600000
- 29 fonts using 1151411 bytes
- 29i,8n,21p,542b,323s stack positions out of 5000i,500n,10000p,200000b,100000s
-<</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><</usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><</usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><</usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><</usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb><</usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmti10.pfb>
-Output written on hw07.pdf (1 page, 84601 bytes).
-
-PDF statistics: 45 PDF objects out of 1000 (max. 8388607)
- 34 compressed objects within 1 object stream
- 6 named destinations out of 1000 (max. 131072)
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 30.
+ ) 
+Here is how much of TeX's memory you used:
+ 4904 strings out of 494910
+ 71344 string characters out of 6179837
+ 150748 words of memory out of 5000000
+ 8189 multiletter control sequences out of 15000+600000
+ 8016 words of font info for 29 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 29i,4n,21p,562b,322s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on hw07.pdf (1 page, 69483 bytes).
+PDF statistics:
+ 37 PDF objects out of 1000 (max. 8388607)
+ 28 compressed objects within 1 object stream
+ 6 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
