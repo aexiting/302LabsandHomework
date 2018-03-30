@@ -1,0 +1,6 @@
+My first issue was with all the weights being 0. I assumed this was from my relax function which is changing the distances.
+I went over it and it seemed to be correct, I noticed that I didn't decrease the s after setting the distance to 0. I added the
+decrease key function and still got zeros with each distance. But I still had an issue and I also noticed that I decrease key with every
+neighbor rather than only when I decrease the distance of a vertex. Finally I asked another student for help and mentioned that
+I had used an enhanced for loop to change the value of each distance to MAX_VALUE which doesn't work. After using a traditional
+for loop the program started to work.
