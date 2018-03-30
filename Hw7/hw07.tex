@@ -16,7 +16,6 @@
 
 This is an \emph{individual} assignment: collaboration (such as discussing problems and brainstorming ideas for solving them) on this assignment is highly encouraged, but the work you submit must be your own. Give information only as a tutor would: ask questions so that your classmate is able to figure out the answer for themselves. It is unacceptable to share any artifacts, such as code and/or write-ups for this assignment. If you work with someone in close collaboration, you must mention your collaborator on your assignment.
 
-\emph{Suggested practice problems, from CLRS:} 23.1-3; 23.1-6; 23.2-4; 23.2-5; 24.1-1
 
 \begin{enumerate}
 \item Problem 23.1-1 from CLRS.
@@ -57,7 +56,5 @@ With the valid input where a tree that has lower weight exists.
 \\Maintanence: At the start of the loop we first check if Bellman-Ford function returns true. If it returns false we can remove an edge from the graph without changing the cycle and thus passes the invariant. Then when Bellman-Ford returns true, it means that the edge $u,v$ was a part of the cycle, thus we add back the edge and using the adjacency list do a breadth first search to find the remaining parts of the cycle. If we find another edge $(v,x)$ when removed causes the BF return true then we change $u$ to equal $v$ and $v$ to equal the current $x$ so that we search it's neighbors for another edge in the cycle.
 \\Termination: The function terminates if there was no cycle found. It also terminates when $x = u_1$ with $u_1$ being the first vertex found to the part of the cycle.
 \item Problem 24.3-4 from CLRS.
-
-\end{enumerate}
-
+First we check if there is one source for the tree $s$. This is a vertex which $s.\pi = NIL$ and $s.d = 0$. Then we iterate through every vertex's adjacency list to check that a neighbor's distance is not more than the vertex's distance pluse the weight fo the edge. \end{enumerate}
 \end{document}
