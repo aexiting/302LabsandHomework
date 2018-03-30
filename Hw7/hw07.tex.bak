@@ -21,9 +21,7 @@ This is an \emph{individual} assignment: collaboration (such as discussing probl
 \item Problem 23.1-1 from CLRS.
 Let $G = (V,E)$ be a connected undirected graph. Let $(u,v)$ be a minimum weight edge. Let there be $T$ which is some subset of $E$ that does not contain a vertex $u$. Since $(u,v)$ is a minimum weight edge, it is a safe edge. And a minimum spanning tree must contain all vertices including $v$ the edge $(u,v)$ will be added.
 \item Problem 23.2-8 from CLRS.
-\\Invariant: $G_1$ and $G_2$ are both subsets of a minimum spanning tree.
-\\Maintenance: if $G_1$ and $G_2$ are one vertex, Then add the edge between them that's in $E$. Otherwise, search for an minimum weight edge $(u,v)$ such that $(u,v) \notin E_1$ and $(u,v) \notin E_2$. Recall that both $G_1$ and $G_2$ are subsets of a minimum spanning tree and $(u,v)$ is a light edge. So by Corollary 23.2, a light edge connecting two components that are subsets of a minimum spanning tree is considered safe and thus creates another subset of the tree.
-\\Termination: Terminates when $G_1$ and $G_2$ are combined and the result contains all vertices in $V$.
+There exists a case where the algorithm does not work. 
 \item Problem 24.1-6 from CLRS. \emph{Hint: Consider running Bellman-Ford more than once.}
 \item Problem 24.3-4 from CLRS.
 

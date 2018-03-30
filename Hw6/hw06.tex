@@ -1,5 +1,5 @@
 \documentclass[letterpaper,11pt]{article}
-
+\usepackage{latexsym}
 \usepackage{fullpage}
 \usepackage{amsmath}
 \usepackage{amsthm}
@@ -44,7 +44,7 @@ We will find all cops and robbers by using a modified breadth-first search. Sinc
 
 \item Problem 22.5-1 from CLRS. In addition to stating your answer, also (formally) prove its correctness.
 
-When a edge is added the amount of strongly connected components can either stay the same if the edge is incident to two nodes in the same component or decrease by $1$ if the edge is added between $2$ components.
+When a edge is added to a graph that contains $i$ multiple components $V_1,V_2,V_3...V_i$ there are two cases. If the edge is added within one component, the number of components will stay the same, since adding an edge between to vertices in a component doesn't change it since it's already strongly connected. Also, if the edge is added between two components but does not create a cycle then $i$ stays the same. \\ \\ However, in the case of the edge being added between two components does create a cycle, the amount of components can decrease to no lower than $1$. So in this case, the number of edges after the edge is added $i_n$ is $1 \leq i_n <$. Suppose the edge $(u,v)$ is drawn between component $V_1$ and $V_2$. Note that $u \in V_1$ and $v \in V_2$. If $(u,v)$ creates a cycle that means that there exists a path of vertices $p = {u,...,v}$ so that $u \leadsto v$ and $v \leadsto u$ since cycles are strongly connected by definition. So, each component that contains a vertex that belongs in $p$ is now part of the same component since every vertex in each component has a path to every other node, including vetices that are in $p$.  If there are $a$ number of components that are connected by a given cycle, then $i$ will decrease by $a-1$. 
  
 \item 
 One DFS will not show if it is semiconnected or not. Only that it is connected. We need to do a DFS-Visit on not visited nodes to see if they're connected or not.
@@ -54,15 +54,21 @@ One DFS will not show if it is semiconnected or not. Only that it is connected. 
 \Function{Semiconnected-Check}{$G$}
 \State $G_R \gets$ \Call{Strongly-Connected-Components}{$G$}
 \State $G_J \gets$ \Call{Topological-Sort}{$G_R$}
-\State $G_{JT} \gets$ \Call{Transpose-Graph}{$G_R$}
-\State \Call{DFS-Visit}{$G_R$,$s$}
-\State \Call{DFS-Visit}{$G_R$,$s_T$}
-\ForAll{$u \in G_R$}
-\If {$u.color == WHITE$}
-\State \Return false
+
+\For{$i := 1 \to G_J.length-1$}
+\State $N \gets$ $G_J[i][1]$
+\State $N_2 \gets G_J[i+1][1]$
+\ForAll{$v \in adj[N]$}
+\If{$v == N_2$}
+\State $childfound = true$
 \EndIf
 \EndFor
-\State \Return true
+\If{$childfound == false$}
+\State \Return $false$
+\EndIf
+\State $childfound = false$
+\EndFor
+\State \Return $true$
 \EndFunction
 \end{algorithmic}
 \end{algorithm}

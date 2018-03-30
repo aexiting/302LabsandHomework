@@ -1,5 +1,5 @@
 \documentclass[letterpaper,11pt]{article}
-
+\usepackage{latexsym}
 \usepackage{fullpage}
 \usepackage{amsmath}
 \usepackage{amsthm}
@@ -26,7 +26,8 @@ This is an \emph{individual} assignment: collaboration (such as discussing probl
 \item \textbf{(From problem set 5; previous exam question)} Let $A[1..n]$ be an array of non-integers taken from some set $K$ of size $k>1$. \emph{(Note: For this problem, you are not given the set $K$ or $k$; this is only to illustrate that there are $k$ distinct non-integer numbers. We only have access to elements through $A$. Further, note that $k$ may be small or large: from constant to even larger than $n$.)}
 \begin{enumerate}
 \item 
-An algorithm that sorts $A$ is described as a counting sort that iterates through the $A$, when a new key is found a node with a varible count is created and inserted in the binary search tree $B$. In the case of key we have already found we will increment the count value in the appropriate node. Going through the array will take $n$ time. Then for $k$ disinct keys we will create a mode which will take at most $lg k$ time. So, the entire algorithm will take $O(n + klg(k))$. 
+An algorithm that sorts $A$ is described as a counting sort that iterates through the $A$, when a new key, $k$ is found a node with a varible count which contains $k$, when then hash the key to hash table $H$. It is created and inserted in the binary search tree $B$. If In the case of key we have already found we increment $H[k]$ by one. If there is collision in the table, the key is added to a linked list. After the array is exausted, We will traverse the array in order, then access the hash table to find the amount each node's value repeats and then add them to the output array. Going through the array will take $n$ time. Then for $k$ disinct keys we will create a mode which will take at most $lg k$ time. So, the entire algorithm will take $O(n + klg(k))$.
+ 
 \item 
 The worst-case running time for my algorithm would be $O(n lg n)$. Since there would be at most $n$ distinct keys where there are no repeated values.
 \end{enumerate}
@@ -43,19 +44,22 @@ We will find all cops and robbers by using a modified breadth-first search. Sinc
 
 \item Problem 22.5-1 from CLRS. In addition to stating your answer, also (formally) prove its correctness.
 
-When a edge is added the amount of strongly connected components can either stay the same if the edge is incident to two nodes in the same component or decrease by $1$ if the edge is added between $2$ components.
+When a edge is added to a graph that contains $i$ multiple components $V_1,V_2,V_3...V_i$ there are two cases. If the edge is added within one component, the number of components will stay the same, since adding an edge between to vertices in a component doesn't change it since it's already strongly connected. Also, if the edge is added between two components but does not create a cycle then $i$ stays the same. \\ \\ However, in the case of the edge being added between two components does create a cycle, the amount of components can decrease to no lower than $1$. So in this case, the number of edges after the edge is added $i_n$ is $1 \leq i_n <$. Suppose the edge $(u,v)$ is drawn between component $V_1$ and $V_2$. Note that $u \in V_1$ and $v \in V_2$. If $(u,v)$ creates a cycle that means that there exists a path of vertices $p = {u,...,v}$ so that $u \leadsto v$ and $v \leadsto u$ since cycles are strongly connected by definition. So, each component that contains a vertex that belongs in $p$ is now part of the same component since every vertex in each component has a path to every other node, including vetices that are in $p$.  If there are $a$ number of components that are connected by a given cycle, then $i$ will decrease by $a-1$. 
  
 \item 
+One DFS will not show if it is semiconnected or not. Only that it is connected. We need to do a DFS-Visit on not visited nodes to see if they're connected or not.
+
 \begin{algorithm}
 \begin{algorithmic}[1]
 \Function{Semiconnected-Check}{$G$}
 \State $G_R \gets$ \Call{Strongly-Connected-Components}{$G$}
-\State $s \gets G_R[0]$
-\State \Call{DFS-Visit}{$G_R$,$s$}
-\ForAll{$u \in G_R$}
-\If {$u.color == WHITE$}
-\State \Return false
-\EndIf
+\State $G_J \gets$ \Call{Topological-Sort}{$G_R$}
+
+\For{$i := 1 \to G_J.length-1$}
+\State $N \gets$ \Call{Find-Root}{$G_J[i]$}
+\State $N_2 \gets$ \Call{Find-Root}{$G_J[i+1]$}
+\ForAll{$v \in adj[N]
+\EndFor
 \EndFor
 \State \Return true
 \EndFunction
