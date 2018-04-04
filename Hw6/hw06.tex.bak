@@ -39,9 +39,9 @@ The worst-case running time for my algorithm would be $O(n lg n)$. Since there w
 \end{enumerate}
 Suppose we know that Dave $\in V$ is a cop. Give an efficient algorithm to distinguish all cops from all robbers.
 
-We will find all cops and robbers by using a modified breadth-first search. Since Dave $/in$ V and is a cop, there will be a set of neighbors. Since each edge is incident to only one cop and one robber. All of of Dave's neighbors would be robbers. Then each of the robber's neighbors that haven't been visited are cops ad well. And the search will reach every node since the graph is connected. 
+We will find all cops and robbers by using a modified breadth-first search. Since $Dave \in V$ and is a cop, there will be a set of neighbors. Since each edge is incident to only one cop and one robber. All of Dave's neighbors are robbers. Suppose each vertex's status is updated in a boolean array named $Cops$ that is length $n$. Vertex $u$ is either a cop which in this cays $Cops[u] == true$ or a robber which would be expressed as $Cops[u] == false$. The source vertex is a cop so we make we update the array and go through it's neighbors. With each neighbor $v$, we check the ancestor and then change the value to be the negation of it's ancestor. We will do this until the main queue is empty.
 \item Problem 22.2-5 from CLRS.
-
+In the figure, if $t$ is before $x$ in $Adj[w]$ we can get a BFS tree in the book. But if 
 \item Problem 22.5-1 from CLRS. In addition to stating your answer, also (formally) prove its correctness.
 
 When a edge is added to a graph that contains $i$ multiple components $V_1,V_2,V_3...V_i$ there are two cases. If the edge is added within one component, the number of components will stay the same, since adding an edge between to vertices in a component doesn't change it since it's already strongly connected. Also, if the edge is added between two components but does not create a cycle then $i$ stays the same. \\ \\ However, in the case of the edge being added between two components does create a cycle, the amount of components can decrease to no lower than $1$. So in this case, the number of edges after the edge is added $i_n$ is $1 \leq i_n <$. Suppose the edge $(u,v)$ is drawn between component $V_1$ and $V_2$. Note that $u \in V_1$ and $v \in V_2$. If $(u,v)$ creates a cycle that means that there exists a path of vertices $p = {u,...,v}$ so that $u \leadsto v$ and $v \leadsto u$ since cycles are strongly connected by definition. So, each component that contains a vertex that belongs in $p$ is now part of the same component since every vertex in each component has a path to every other node, including vetices that are in $p$.  If there are $a$ number of components that are connected by a given cycle, then $i$ will decrease by $a-1$. 
@@ -56,12 +56,19 @@ One DFS will not show if it is semiconnected or not. Only that it is connected. 
 \State $G_J \gets$ \Call{Topological-Sort}{$G_R$}
 
 \For{$i := 1 \to G_J.length-1$}
-\State $N \gets$ \Call{Find-Root}{$G_J[i]$}
-\State $N_2 \gets$ \Call{Find-Root}{$G_J[i+1]$}
-\ForAll{$v \in adj[N]
+\State $N \gets$ $G_J[i][1]$
+\State $N_2 \gets G_J[i+1][1]$
+\ForAll{$v \in adj[N]$}
+\If{$v == N_2$}
+\State $childfound = true$
+\EndIf
 \EndFor
+\If{$childfound == false$}
+\State \Return $false$
+\EndIf
+\State $childfound = false$
 \EndFor
-\State \Return true
+\State \Return $true$
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
