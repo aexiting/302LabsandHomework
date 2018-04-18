@@ -1,5 +1,5 @@
 \documentclass[letterpaper,11pt]{article}
-
+\usepackage{amsfonts}
 \usepackage{fullpage}
 \usepackage{graphicx}
 \usepackage{fullpage}
@@ -7,7 +7,16 @@
 \usepackage{amsthm}
 \usepackage{hyperref}
 \usepackage{algorithm}
+\usepackage{amsmath}
 \usepackage[noend]{algpseudocode}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm}
+
 \newtheorem{theorem}{Theorem}[section]
 
 \begin{document}
@@ -26,23 +35,59 @@ This is an \emph{individual} assignment: collaboration (such as discussing probl
 
 \begin{enumerate}
 \item \textbf{(Worth 10 points)} Problem 16-1 from CLRS.
-Note that $k$ is a set of coins that can be used to make change sorted in decreasing order.
+\begin{enumerate}
+\item We suppose an algorithm that stores the coin values in an array in decreasing order. Then we iterate through the array and which each iteration, we divide the input by the coin value floored. And then add the result to another array called count, which stores the frequency of each coin. Such that quarter's frequency would be first followed by dimes then nickles and finally pennies. Usiing larger coins first will always lead to using less coins since smaller coins can be used to represent bigger coins. Suppose there existed a correct coin count that was equal to the amount we had found. Note that for coin values higher than 24 cents our algorithm will use a quarter. Using anything smaller would yield a count that's higher. For cent values between 24 and 10 inclusive we would use dimes, we could not use quarters because the value isn't high enough and we would not use a combination of nickles nor pennies since that would yield a higher count. The same goes for nickles which we would use for values lesser than 10 but higher than 4. Using a combination of pennies would always yield a higher coin count. Then finally we use pennies for the rest. This shows that we can consider the optimal solution and our own both the same.
+
+\item The algoritm that makes change does so by finding $c^i$ which is the denomination which is the greatest denomnation of the set which $c^i \leq n$ holds. We increment the count then do a recursive call on the subproblem $n-c^i$. Note that since we find the maximum every time  which the inequality holds, we can use denominations that are less than $c^i$ to make the same value but never with the same amount or less coins since it's the maximum.
+
+\item If we were given a set of denominations such that $D = {1,5,7}$. And the cent value is $10$. A greedy algorithm would choose $7$ then three $1$ cent coins. When the optimal solution would be two $5$ cent coins which is better than our greedy algorithm.
+
+\item Let $N$ be coin value. Let $D$ an array of denominations in decreasing order. Let $T$ be a two dimensional array. With one axis that represents the counts of each denomination and the other axis representing the coin value of all the denominations in the other axis. Not that this table is intialized so that each element has the value of $\infty$.
 \begin{algorithm}
 \begin{algorithmic}[1]
-\Function{Make-Change}{$n$}
-\State $i \gets 1$
-\While{$i \leq k.length$}
-\$
-\State $c_o = c$
+\Function{MakeChange}{$N,D,T$}
+\If{$T[N][D] = \infty$}
+\State $c = 1$
+\For{$c \leq D.length$} 
+\If{$N \neq 0$ and $c \leq N$}
+\If{\Call{MakeChange}{$N-c,D,T_1$} $<$ \Call{MakeChange}{$N,D-c,T_1$}}
+\State $T[c] = T[c] + 1$
+\State \Return $1+$\Call{MakeChange}{$N-c,D,T_1$}
+\Else
+\State  \Return \Call{MakeChange}{$N,D-c,T_1$} 
 \EndIf
-\State $i \gets i +1$
-\EndWhile
+\Else
+\State $T[N][D] = 0$
+\State \Return $0$
+\EndIf
+\EndFor
+\Else
+\State \Return $T[N][D]$
+\EndIf
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
-\item Problem 15.1-2 from CLRS.
-\item Problem 15.1-3 from CLRS.
+\end{enumerate}
 
+
+\item Problem 15.1-2 from CLRS.
+Suppose we have a rod of length 4. And three types of cuts which can be done on the rod. Rods of length $1$ have a density of $1$. Rods of length $2$ have a density of $1.50$ and rods with a density of $3$ have a density of $1.75$. The greedy described in the problem would choose to first make a cut of length $3$ then length $1$ which has a value of $2.75$ but this is not optimal since two cuts of length $2$ would give a value $3.00$ which is greater than the greedy algorithm.
+\item Problem 15.1-3 from CLRS.
+\begin{algorithm}
+\begin{algorithmic}[1]
+\Function{MakeChange}{$p,n$}
+\For{$j \gets 1$ \textbf{to} $n$}
+\State $maxprofit = 0$
+\For{$k \gets 1$ \textbf{to} $j$}
+\If{$maxprofit < P_i + R[i=l_i]-c$ and $j - l_i \geq 0$}
+\State $maxprofit = P_i + R[i=l_i] -c$
+\EndIf
+\EndFor
+$R[j] = maxprofit$
+\EndFor
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
 \end{enumerate}
 
 \end{document}
