@@ -1,0 +1,6 @@
+I first decided to try to apply the algorithm in the instructions given in class. First I tried to write the method without changing the arguments. I started with the base chase which
+compares the amount of work done by the truck in the current solution and the best solution found so far. I did this by creating an ArrayList and filling it with weights. Which makes it the
+same size as each package. Then I would add package to the delivery, remove it from the candidates and then do a recursive call with the solution and the new candidates. Then I remove the choice
+after the recursive call. When I ran my program, the output was a series of zeros. I tried to check if the for loop was running by adding the appropriate print statements but it still did not
+change the output. I believe this is due to my loop being based on the number of candidates, which meant that the size of the array was zero. Another possible cause,
+is an issue with pointers. Since,

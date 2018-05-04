@@ -1,0 +1,10 @@
+When I first finished my program and got it working. I tried it on the first case and got outputs that were similar to what was shown on the
+assignment. On the second case, it seemed like my program wasn't working properly. So I decided to check how I make choices. The size of the input made it difficult to discover the
+issue so I thought about it more conceptually. My program's algorithm seemed greedy, and this might have caused it to fail in the second instance. My algorithm seems to choose
+to use an ape unless there aren't enough bananas. I checked the bounds of the loops and conditionals that I use to find the apes that are needed for the optimal answer.
+But that didn't change the result. So I decided to check how I fill the table. I tried to change the decision so that it would compare using all apes as a first move
+and choose the one which will bring the most bananas. But I ran into a few issues and I went back to the algorithm that most closely resembled my recurrence.
+
+I tried again for a program that tried using all monkeys then choosing monkey who brings the most bananas back first. However,
+I had a few bugs with the program so that the only instance that worked was the second one. For some reason, it was allowing apes that carry more bananas then existed
+to be used.

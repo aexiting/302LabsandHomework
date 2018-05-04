@@ -1,0 +1,30 @@
+\documentclass[letterpaper,11pt]{article}
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+
+\begin{document}
+\noindent{COSC 302: Analysis of Algorithms --- Spring 2018}\\
+\noindent{Algorithm Write-Up}\\
+\noindent{Adam Pettway}\\
+
+The vehicle Routing Problem or VRP is a problem is finding the optimal route for a number of vehicles to traverse the set of stops and roads that connect these stops. Each stop may or may not have a customer which requires a certain number of each resource. And usually, each vehicle can only carry a finite amount of materials. Some common goals of optimization is minimizing the driving time for each vehicle or using the least amount of vehicles to reach all customers under a time constraint. These goals can be considered constraints for a valid answer. Naturally, with the more constraints, the problem becomes more difficult to optimize, since one solution which improves one component often does so at the other’s expense.  This problem has countless applications in distribution. (All people used)\\
+
+The graph problem defined formally by Gilbert Laporte, is as follows: Let $G=(V,A)$ be a graph where $V={1,2...n}$ is a set of vertices representing cities with the depot located at vertex $1$, and $A$ is the set of arcs. With every arc $(i,j) i \neq j$ is associated a non-negative distance matrix $C = (c_{ij})$. Note that $c_{ij}$ can also be interpreted as a travel cost or a travel time. When $C$ is symmetrical, we can replace $A$ with $E$ which is a set of undirected edges.  In addition, assume there are $m$ vehicles available at the depot, where they are all located at the start of the algorithm. (Fin Gilbert Laporte)
+ 
+As mentioned previously there are many ways of optimizing the problem. But in all cases, there is some cost that needs to be minimized and these constrants will be described for each algorithm in the paper.
+
+Christofides, Mingozzi and Toth's alogrithm uses 'k-degree center tree relaxsation of the m-TSP where m is fixed. In any solution, the set E of edges can be seperated into four subsets. 
+\begin{enumerate}
+\item $E_0$: edges not belonging to solution
+\item $E_1$: edges forming a k-degree center tree, which is a spanning tree over $G$ where the degree of vertex 1 is equal to $k$ and $k = 2m-y$.
+\item $E_2$: $y$ edges incident to vetex 1 ($0\leq y \leq m$).
+\item $E_3$: $m-y$ edges not incident to vertex 1.
+\end{enumerate}
+
+\end{document}
