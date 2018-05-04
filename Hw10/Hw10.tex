@@ -36,6 +36,14 @@ The sub problems are the two substring that are created when you choose a split.
   \end{cases}
 \end{equation}
 
+ We reduce from Hamiltonian Path problem. Given a graph $G=(V,E)$, we add two
+  vertices $s$ and $t$ that connects all $v$ in $V$, respectively. Also $s$ and
+  $t$ is connected.  Then we get a graph $G'=(V',E')$, where $V'=V\cup \{s,t\}$
+  and $E'=E\cup \{(s,t)\} \cup \{(s,v), (t,v) \ |\  v\in V\}$.  We assign a
+  weight $|E|+2|V|$ to $(s,t)$, and 1 to all other edges.  An illustration is
+given as follows: 
+
+
 \item Show that the problem has optimal substructure, that there is subproblem overlap, and that subproblems are independent.
 Optimal Substructure: I shall prove this problem has optimal substructure by contradiction. Assume that a solution does not need optimal solutions to the subproblems in order to be correct. Let $k_OPT$ be a part of an optimal solution. Let $k_L$ be our part of the solution which is not optimal. The cut $K_OPT$ leads to a sum of subproblems called $OPT_sum$ and $k_L$ lead to a sum of subproblems called $L_sum$ note by definition of optimal $OPT_sum < L_sum$. Which means, $OPT < L$ since $OPT = OPT_sum + (e-s)$ and $L = L_sum + (e-s)$. But we assumed $L$ does not need optimal sub problems whichi leads to a contradiction.\\
 SubProblem Overlap: The problem has overlapping sub problems because each problem depends on two other sub problems. $L_{s,k},L_{k,e}$. Which both have a value $L_{s,e}$.\\

@@ -10,7 +10,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.lang.Exception;
-
+import java.lang.Math;
 class ApeCarry {
 
 	int   bananaLoad;
@@ -30,18 +30,58 @@ class ApeCarry {
 		int apeCarryTable[][] = new int[numApes+1][bananaLoad+1];
 
 		// TODO: Fill in base cases
-
+		for(int i = 0; i < apeCarryTable.length; i++)
+		for(int j = 0; j < apeCarryTable[i].length; j++){
+			if(i == 0 || j == 0){
+				apeCarryTable[i][j] = 0;
+			}
+		}
 
 		// TODO: fill in table
-
-
+		for(int i = 1; i <= numApes; i++){
+						for(int j = 1; j <= bananaLoad; j++){
+							if(j < capacityPerApe[i]){
+								apeCarryTable[i][j] = apeCarryTable[i-1][j];
+							}
+							else{
+								apeCarryTable[i][j] = Math.max(apeCarryTable[i-1][j-capacityPerApe[i]] + capacityPerApe[i]-snackLossPerApe[i],apeCarryTable[i-1][j]);
+						}
+						}
+				}
+		// int max = 0;
+		// for(int j = 1; j <= bananaLoad; j++){
+		// 	for(int i = 1; i< numApes; i++){
+		// 		if(capacityPerApe[i]<j){
+		// 		if(max < apeCarryTable[i-1][j-capacityPerApe[i]]+capacityPerApe[i]-snackLossPerApe[i]){
+		// 			max = apeCarryTable[i-1][j-capacityPerApe[i]]+capacityPerApe[i]-snackLossPerApe[i];
+		// 		}
+		// 		else if(max < apeCarryTable[i-1][j]){
+		// 				max = apeCarryTable[i-1][j];
+		// 			}
+		// 		}
+		// 			apeCarryTable[i][j] = max;
+		// 	}
+		// }
 		// 1 if ape carries, 0 if ape does not carry
 		int[] carrierArray = new int[numApes+1];
 
 
 		// TODO: construct carrier array from value table
 
-
+		int a = numApes;
+		int k = bananaLoad;
+		int check;
+		while(a > 0){
+			check = apeCarryTable[a][k];
+			if(check == apeCarryTable[a-1][k]){
+				a--;
+			}
+			else{
+				carrierArray[a] = 1;
+				k = k - capacityPerApe[a];
+				a--;
+			}
+	}
 		return carrierArray;
 	}
 }
